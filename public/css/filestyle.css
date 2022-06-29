@@ -1,0 +1,19 @@
+.formContainer {
+  background: linear-gradient(#e26a0b 60%, #333840 100%), #e26a0b;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formContainer form {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+
+  flex-direction: column;
+  background-color: white;
+  width: 40vw;
+  height: 30vw;
+  border-radius: 14px;
+}
