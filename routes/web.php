@@ -17,7 +17,9 @@ Route::post('/register',  [FileController::class,'registerUser']);
 
 //Table
 Route::get('/table',  [FileController::class,'tableweb']);
+Route::get('/table/download{file}',  [FileController::class,'downloadfile']);
 Route::get('/tableLogOut',  [FileController::class,'userLogOut']);
+
 
 
 //Upload

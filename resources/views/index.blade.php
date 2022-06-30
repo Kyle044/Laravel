@@ -38,6 +38,63 @@
                 <button type="submit" class="sbmit">Submit</button>
             </form>
         </div>
+
+
+
+
+
+
+
+
+        <!-- <div class="footerContainer">
+            <div>
+                <h1>Some Links</h1>
+                <ul>
+                    <li><a href="">FAQ</a></li>
+                    <li><a href="">Cookies Policy</a></li>
+                    <li><a href="">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <form class="contactForm">
+                    <div class="nameEmail">
+                        <div class="form-group row">
+                            <label for="email" class="col-4 col-form-label">Email</label>
+                            <div class="col-8">
+                                <input id="email" name="email" type="text" class="form-control" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-4 col-form-label">Name</label>
+                            <div class="col-8">
+                                <input id="name" name="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="offset-4 col-8">
+                                <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="message" class="col-4 col-form-label">Message</label>
+                        <div class="col-8">
+                            <textarea id="message" name="message" cols="40" rows="5" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div></div>
+        </div> -->
+
+
+
+
+
     </div>
 
     <script>

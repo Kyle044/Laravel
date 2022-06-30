@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\FileUser;
+use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Storage;
 class FileController extends Controller
 {
     
@@ -21,7 +22,8 @@ public function registerweb(){
 }
 
 public function tableweb(){
-     return view('table',["username"=>session("username")]);
+     $file = File::all();
+     return view('table',['files'=>$file]);
 }
 
 
@@ -90,24 +92,28 @@ public function userLogOut(Request $request){
 
 
 public function fileupload(Request $request){
-
-
-// error_log($request->filename);
-// error_log($request->company);
-// error_log($request->file->file);
-
-// if ($request->hasFile('file')) {
-//         error_log("has file");
-// }else{
-//           error_log("does not have a file");
-// }
-
 $ext = $request->file('file')->getClientOriginalName();
 $fileExt = explode('.', $ext);
 $fileActualExt = strtolower(end($fileExt));
-$request->file('file')->storeAs("upload",$request->filename.".".$fileActualExt);
+$request->file('file')->storeAs("public/upload",$request->filename.".".$fileActualExt);
+
+$file = new File();
+$file->filename = $request->filename;
+$file->dataflow = $request->company;
+$file->	fileDIR = $request->filename.".".$fileActualExt;
+$file->save();
    return response()->json(['data'=>"Successfully Uploaded." ,"raw"=>$request]);
-        
+}
+
+
+
+public function downloadfile(Request $request,$file){
+
+
+
+return response()->download(public_path('storage\\upload\\'.$file));
+
+
 }
 
 

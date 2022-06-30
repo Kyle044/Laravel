@@ -62,7 +62,8 @@
                     type: "POST",
                     data: formData,
                     success: (res) => {
-                        console.log(res.data)
+                        alert(res.data);
+                        // window.location.href = "/table";
                     }, cache: false,
                     contentType: false,
                     processData: false

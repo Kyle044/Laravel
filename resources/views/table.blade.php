@@ -48,41 +48,32 @@
                         <h5>Log Out</h5>
                     </li>
                 </ul>
-
-
-
             </div>
             <div class="tableContainer2">
-
                 <h2>List of Files</h2>
                 <table id="table" class="table table-striped table-bordered " style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>FILENAME</th>
-                            <th>DATAFLOW</th>
+                            <th>COMPANY</th>
                             <th>ACTION</th>
-
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($files as $file)
                         <tr>
-                            <td>1</td>
-                            <td>File XXX</td>
-                            <td>NULL</td>
+                            <td>{{$file->id}}</td>
+                            <td>{{$file->filename}}</td>
+                            <td>{{$file->dataflow}}</td>
                             <td>
-                                <div class="sbmit download">Download</div>
+                                <a href="{{url('/table/download'.$file->fileDIR)}}" class="sbmit download">Download</a>
                             </td>
-
                         </tr>
-
-
-
+                        @endforeach
                     </tbody>
-
                 </table>
             </div>
-
         </div>
 
 
