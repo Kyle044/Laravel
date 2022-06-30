@@ -16,6 +16,7 @@ class AddFileDIRToFilesTable extends Migration
         Schema::table('files', function (Blueprint $table) {
             //
                     $table->string("fileDIR");
+                    $table->string("user_ID_FK");
         });
     }
 

@@ -23,7 +23,8 @@ public function registerweb(){
 
 public function tableweb(){
      $file = File::all();
-     return view('table',['files'=>$file]);
+     $user = FileUser::all();
+     return view('table',['files'=>$file,'users'=>$user]);
 }
 
 
@@ -68,6 +69,7 @@ public function checkUser(Request $request){
                 $request->session()->put('username', $user->username);
                 $request->session()->put('firstname',$user->firstname);
                 $request->session()->put('lastname',$user->lastname);
+           
                 return response()->json(['data'=>true , 'msg'=>"Login Successfully" ,"user"=>$user]);
             }else{
                    return response()->json(['data'=>false , 'msg'=>"The password is incorrect"]);
@@ -92,6 +94,7 @@ public function userLogOut(Request $request){
 
 
 public function fileupload(Request $request){
+
 $ext = $request->file('file')->getClientOriginalName();
 $fileExt = explode('.', $ext);
 $fileActualExt = strtolower(end($fileExt));
@@ -101,6 +104,7 @@ $file = new File();
 $file->filename = $request->filename;
 $file->dataflow = $request->company;
 $file->	fileDIR = $request->filename.".".$fileActualExt;
+$file->user_ID_FK = session()->get('user_id');
 $file->save();
    return response()->json(['data'=>"Successfully Uploaded." ,"raw"=>$request]);
 }

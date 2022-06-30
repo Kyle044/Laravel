@@ -16,8 +16,6 @@
             <!-- Left side of Card -->
             <div class="registerCard">
                 <div class="welcomeCard inputCard btm">
-
-
                     <div class="form-group"><input class="form-control form-control-user" type="text" id="fname"
                             placeholder="Enter First Name" name="fname">
                         <span class="text-danger"></span>

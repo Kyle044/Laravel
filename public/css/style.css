@@ -222,6 +222,10 @@ select.input-sm {
 .leftNav ul li h5 {
     height: 100%;
 }
+.leftNav ul li h5 a {
+    color: white;
+    text-decoration: none;
+}
 .leftNav ul li i {
     font-size: 100%;
     margin-right: 1rem;
@@ -257,6 +261,11 @@ select.input-sm {
     flex-direction: column;
     justify-content: space-evenly;
     margin-right: 4rem;
+}
+.tableCont {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 @media (max-width: 1106px) {
     .welcomeCard h3 {

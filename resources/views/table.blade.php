@@ -38,10 +38,10 @@
         <div class="bodyContainer">
             <div class="leftNav">
                 <ul>
-                    <li><i class="fa-solid fa-upload icon-2x"></i>
+                    <li id="upbtn"><i class="fa-solid fa-upload icon-2x"></i>
                         <h5>Uploaded Files</h5>
                     </li>
-                    <li><i class="fa-solid fa-users icon-2x"></i>
+                    <li id="regbtn"><i class="fa-solid fa-users icon-2x"></i>
                         <h5>Registered User</h5>
                     </li>
                     <li id="logout"><i class="fa-solid fa-arrow-right-from-bracket icon-2x"></i>
@@ -49,31 +49,63 @@
                     </li>
                 </ul>
             </div>
-            <div class="tableContainer2">
-                <h2>List of Files</h2>
-                <table id="table" class="table table-striped table-bordered " style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>FILENAME</th>
-                            <th>COMPANY</th>
-                            <th>ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($files as $file)
-                        <tr>
-                            <td>{{$file->id}}</td>
-                            <td>{{$file->filename}}</td>
-                            <td>{{$file->dataflow}}</td>
-                            <td>
-                                <a href="{{url('/table/download'.$file->fileDIR)}}" class="sbmit download">Download</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+            <div class="tableCont">
+                <div class="tableContainer2" id="fileTbl">
+                    <h2>List of Files</h2>
+                    <table id="table" class="table table-striped table-bordered " style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>FILENAME</th>
+                                <th>COMPANY</th>
+                                <th>USER WHO UPLOADED</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($files as $file)
+                            <tr>
+                                <td>{{$file->id}}</td>
+                                <td>{{$file->filename}}</td>
+                                <td>{{$file->dataflow}}</td>
+                                <td>{{$file->user_ID_FK}}</td>
+                                <td>
+                                    <a href="{{url('/table/download'.$file->fileDIR)}}"
+                                        class="sbmit download">Download</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tableContainer2" id="registeredUserTbl">
+                    <h2>Registered Users</h2>
+                    <table id="table2" class="table table-striped table-bordered " style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>FIRST NAME</th>
+                                <th>LAST NAME</th>
+                                <th>USERNAME</th>
+                                <th>COMPANY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($users as $user)
+                            <tr>
+                                <td>{{$user->id}}</td>
+                                <td>{{$user->firstname}}</td>
+                                <td>{{$user->lastname}}</td>
+                                <td>{{$user->username}}</td>
+                                <td>{{$user->company}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
         </div>
 
 
@@ -91,6 +123,7 @@
 
     <script>
         $(document).ready(function () {
+            $("#registeredUserTbl").hide();
             $("#logout").click(() => {
 
                 //Log - out
@@ -116,6 +149,15 @@
                     processData: false
                 });
             })
+            $("#upbtn").on('click', () => {
+                $("#fileTbl").show();
+                $("#registeredUserTbl").hide();
+            })
+
+            $("#regbtn").on('click', () => {
+                $("#registeredUserTbl").show();
+                $("#fileTbl").hide();
+            })
         });
 
     </script>
@@ -129,5 +171,6 @@
 <script>
     $(document).ready(function () {
         $('#table').DataTable();
+        $('#table2').DataTable();
     });
 </script>
